@@ -17,6 +17,10 @@ import SettingsView from './views/SettingsView.vue'
 import ContactView from './views/ContactView.vue'
 import LearningView from './views/LearningView.vue'
 
+const firebaseConfig = {
+    // TODO: Add your firebase config here
+};
+
 const routes = [
     {
         path: '/',
