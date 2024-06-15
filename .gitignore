@@ -3,8 +3,7 @@
 /dist
 
 
-# local env files
-.env
+# local env filesS
 .env.local
 .env.*.local
 
