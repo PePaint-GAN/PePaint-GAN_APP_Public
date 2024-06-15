@@ -139,7 +139,7 @@ export default {
         },
         async getListOfImages(userId) {
             try{
-                const response = await axios.get(`https://paintganwebapp.azurewebsites.net/api/painting/list/${userId}`);
+                const response = await axios.get(`${process.env.VUE_APP_BACKEND_URL}/api/painting/list/${userId}`);
                 this.imageLinks = response.data;
                 this.imageLinksFiltered = response.data;
             } catch (error) {
@@ -170,7 +170,7 @@ export default {
                 if (user) {
                     const userId = user.uid;
 
-                    await axios.delete(`https://paintganwebapp.azurewebsites.net/api/painting/delete/${imageId}`);
+                    await axios.delete(`${process.env.VUE_APP_BACKEND_URL}/api/painting/delete/${imageId}`);
 
                     this.getListOfImages(userId);
                 } else {

@@ -120,7 +120,7 @@ export default {
               isPublic: this.isPublic,
             };
 
-            await axios.post('https://paintganwebapp.azurewebsites.net/api/user/add', userData);
+            await axios.post(`${process.env.VUE_APP_BACKEND_URL}/api/user/add`, userData);
             this.$router.push('/Generation');
           } catch (error) {
             console.error(error);
@@ -137,7 +137,7 @@ export default {
         }
 
         try {
-          const response = await axios.get('https://paintganwebapp.azurewebsites.net/api/user/list');
+          const response = await axios.get(`${process.env.VUE_APP_BACKEND_URL}/api/user/list`);
           const usernames = response.data.map(user => user.username);
           if (usernames.includes(this.username)) {
             this.usernameError = 'El nombre de usuario ya está en uso.';

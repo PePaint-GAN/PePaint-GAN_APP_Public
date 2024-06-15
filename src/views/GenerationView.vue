@@ -116,7 +116,7 @@ export default {
             };
 
             // Realiza una solicitud POST a la API Flask para generar imágenes
-            axios.post('https://paintganwebapp.azurewebsites.net/api/painting/generate_images/' + this.selectedModel, requestData)
+            axios.post(`${process.env.VUE_APP_BACKEND_URL}/api/painting/generate_images/` + this.selectedModel, requestData)
                 .then((response) => {
                     // Obtiene las URLs de las imágenes generadas desde la respuesta de la API
                     const imageUrls = response.data.image_urls;
@@ -137,7 +137,7 @@ export default {
                 image_url: this.imageSrcs[opcion],
             }
 
-            axios.post("https://paintganwebapp.azurewebsites.net/api/painting/add", paintingData)
+            axios.post(`${process.env.VUE_APP_BACKEND_URL}/api/painting/add`, paintingData)
                 .then(response => {
                     this.imagenGuardada = "Pintura " + (opcion + 1);
 

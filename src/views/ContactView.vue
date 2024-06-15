@@ -92,7 +92,7 @@
           },
           async getPublicArtists() {
               try {
-                  const response = await axios.get('https://paintganwebapp.azurewebsites.net/api/user/list')
+                  const response = await axios.get(`${process.env.VUE_APP_BACKEND_URL}/api/user/list`)
                   this.users = response.data.filter(user => user.isArtist && user.isPublic)
               } catch (error) {
                   console.error('Error al obtener la lista de artistas:', error);

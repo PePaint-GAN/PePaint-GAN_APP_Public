@@ -217,7 +217,7 @@
             async getData() {
                 this.username = getAuth().currentUser.displayName;
                 try {
-                    const response = await axios.get('https://paintganwebapp.azurewebsites.net/api/user/get/' + getAuth().currentUser.uid);
+                    const response = await axios.get(`${process.env.VUE_APP_BACKEND_URL}/api/user/get/` + getAuth().currentUser.uid);
                     const userData = response.data;
                     this.fullName = userData.fullName;
                     this.address = userData.address;
@@ -252,7 +252,7 @@
                         personalPage: this.personalPage,
                     }
 
-                    await axios.put('https://paintganwebapp.azurewebsites.net/api/user/update/' + getAuth().currentUser.uid, userData);
+                    await axios.put(`${process.env.VUE_APP_BACKEND_URL}/api/user/update/` + getAuth().currentUser.uid, userData);
                     this.errMsg = '';
 
                 } catch(error) {
@@ -267,7 +267,7 @@
             async deleteAccount() {
                 try {
                     const user = getAuth().currentUser;
-                    await axios.delete('https://paintganwebapp.azurewebsites.net/api/user/delete/' + user.uid);
+                    await axios.delete(`${process.env.VUE_APP_BACKEND_URL}/api/user/delete/` + user.uid);
                     await user.delete();
                     this.$router.push('/');
                 } catch (error) {
